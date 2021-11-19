@@ -1,0 +1,119 @@
+len() /리스트의 길이를 알려주는 함수
+a=[1,2,3,4,]
+print(len(a))
+
+1~5까지 무작위 값을 100번 뽑고 종류별로 몇개인지 정리하는 코드.
+q=0
+w=0
+e=0
+r=0
+t=0
+#1~5까지 숫자 갯수를 적는 변수.
+import random
+#random함수 추가.
+a=[]
+#리스트 a선언.
+for i in range(100):
+    a.append(random.randrange(1,6))
+    #리스트 a에 100가지 무작위값 추가.
+    if a[i]==1:
+        q=q+1
+        #무작위값이 1일 경우 q에 1더하기.
+    elif a[i]==2:
+        w=w+1
+        #무작위값이 2일 경우 w에 1더하기.
+    elif a[i]==3:
+        e=e+1
+        #무작위값이 3일 경우 e에 1더하기.
+    elif a[i]==4:
+        r=r+1
+        #무작위값이 4일 경우 r에 1더하기.
+    elif a[i]==5:
+        t=t+1
+        #무작위값이 5일 경우 t에 1더하기.
+print("1:",q,"2:",w,"3:",e,"4:",r,"5:",t)
+#숫자 갯수 출력.
+
+최적화 버젼
+import random
+a=[]
+
+for i in range(100):
+    b=random.randrange(1,6)
+    a.append(b)
+
+count_list=[0,0,0,0,0]
+for i in range(len(a)):
+    Num=a[i]-1
+    count_list [Num] += 1
+print(count_list)
+
+더더욱 최적화
+import random
+count_list=[0,0,0,0,0]
+for i in range(100):
+    count_list [random.randrange(1,6)-1]+=1
+print(count_list)
+[뽑은 랜덤값이 리스트에 저장되지 않기때문에 나온 랜덤값은 사용할수 없다.
+
+format. format함수의 괄호안에 들어있는 값이 앞에 문자열에 중괄호에 들어가게 해주는 함수.
+print("I'm {} years old".format(2))
+I'm 2 years old
+
+AI와 가위바위보 하기 코드.
+import random
+win=(0)
+life=(3)
+print("가위 바위 보 중 하나를 선택해서 입력해 주세요. 현재목숨은 {}개 입니다.".format(life))
+while life > 0:
+    PLAYER = (input())
+    if PLAYER==("가위"):
+        PLAYER=(1)
+    elif PLAYER==("바위"):
+        PLAYER=(2)
+    elif PLAYER==("보"):
+        PLAYER=(3)
+    else:
+        life -= 1
+        print("안내서 졌습니다. 목숨이 {}개 입니다. 현재 우승 횟수는 {}번 입니다.".format(life,win))
+    AI = (random.randrange(1, 4))
+    if (PLAYER==(1) and AI==(1)) or (PLAYER==(2) and AI==(2)) or (PLAYER==(3) and AI==(3)):
+        print("비겼습니다. 다시 하세요. 현재 목숨은 {}개 입니다. 현재 우승 횟수는 {}번 입니다.".format(life,win))
+        continue
+    elif (PLAYER==(1) and AI==(3)) or (PLAYER==(2) and AI==(1)) or (PLAYER==(3) and AI==(2)):
+        win += 1
+        print("승리하였습니다. 현재 목숨은 {}개 입니다. 현재 우승 횟수는 {}번 입니다.".format(life,win))
+        continue
+    elif (PLAYER==(1) and AI==(2)) or (PLAYER==(2) and AI==(3)) or (PLAYER==(3) and AI==(1)):
+        life -= 1
+        print("패배하였습니다. 현재 목숨은 {}개 입니다. 현재 우승 횟수는 {}번 입니다.".format(life,win))
+        continue
+print("당신은 생명력을 전부 소진하였습니다. 눈앞이 깜깜해 졌습니다.500원을 잃었습니다.")
+print("안녕 여기는 포켓몬 센터야!")
+print("너는 총 {}번 우승했어!".format(win))
+
+최적화(?)
+import random
+win=(0)
+life=(3)
+print("가위 바위 보 중 하나를 선택해서 입력해 주세요. 현재목숨은 {}개 입니다.".format(life))
+while life > 0:
+    PLAYER = (input())
+    if PLAYER!= "가위" or "바위" or "보":
+        life -= 1
+        print("안내서 졌습니다. 목숨이 {}개 입니다. 현재 우승 횟수는 {}번 입니다.".format(life,win))
+    AI = (random.randrange(1, 4))
+    if (PLAYER==("가위") and AI==(1)) or (PLAYER==("바위") and AI==(2)) or (PLAYER==("보") and AI==(3)):
+        print("비겼습니다. 다시 하세요. 현재 목숨은 {}개 입니다. 현재 우승 횟수는 {}번 입니다.".format(life,win))
+        continue
+    elif (PLAYER==("가위") and AI==(3)) or (PLAYER==("바위") and AI==(1)) or (PLAYER==("보") and AI==(2)):
+        win += 1
+        print("승리하였습니다. 현재 목숨은 {}개 입니다. 현재 우승 횟수는 {}번 입니다.".format(life,win))
+        continue
+    elif (PLAYER==("가위") and AI==(2)) or (PLAYER==("바위") and AI==(3)) or (PLAYER==("보") and AI==(1)):
+        life -= 1
+        print("패배하였습니다. 현재 목숨은 {}개 입니다. 현재 우승 횟수는 {}번 입니다.".format(life,win))
+        continue
+print("당신은 생명력을 전부 소진하였습니다. 눈앞이 깜깜해 졌습니다.500원을 잃었습니다.")
+print("안녕 여기는 포켓몬 센터야!")
+print("너는 총 {}번 우승했어!".format(win))
