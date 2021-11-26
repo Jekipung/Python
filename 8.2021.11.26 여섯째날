@@ -1,0 +1,150 @@
+print() /함수
+input() /함수
+import random /함수
+
+random.randrange() /함수
+함수:편리함을 가진 수단.
+파이썬에서 기본적으로 있는 함수와 추가하는 함수,우리가 만드는 함수가 있다.
+우리가 만드는 함수는 "사용자함수"로 function이라 한다
+def test():
+def /함수를 만들겠다는 함수.
+
+def test():
+    print("HI")
+함수를 만들고
+
+test() /함수를 실행.
+
+a = input() 입력받은 값이 a에 저장
+
+return /함수를 실행하면 값을 준다.
+return 1 /1의 값을 받는다.
+
+def test():
+    print("HI")
+    return 1
+
+print(test())
+
+HI
+1
+
+리턴은 함수에게 값을 준다.
+
+def test(a): /tset라는 함수를 만든다. a라는 변수를 요구한다.
+이 함수를 사용하기 위해서라면 값을 하나 입력해 줘야 한다.
+
+def test(a,b,c,d,e,f,)
+이런식으로 늘릴수 있다.
+
+def a(b,c):
+    return b+c
+print(a(int(input()),int(input())))
+
+원하는 숫자 2개를 더해서 출력하는 함수
+
+
+print(a()) /함수를 호출해서 함수를 사용
+
+lol=0
+def win_or_lose ():
+    if (a[6] == "O" and a[7] == "O" and a[8] == "O") or (a[3] == "O" and a[4] == "O" and a[5] == "O") or (
+            a[0] == "O" and a[1] == "O" and a[2] == "O") or (a[6] == "O" and a[3] == "O" and a[0] == "O") or (
+            a[7] == "O" and a[4] == "O" and a[1] == "O") or (a[8] == "O" and a[5] == "O" and a[2] == "O") or (
+            a[6] == "O" and a[4] == "O" and a[2] == "O") or (a[8] == "O" and a[4] == "O" and a[0] == "O"):
+        print("플레이어 우승.")
+    elif (a[6] == "X" and a[7] == "X" and a[8] == "X") or (a[3] == "X" and a[4] == "X" and a[5] == "X") or (
+            a[0] == "X" and a[1] == "X" and a[2] == "X") or (a[6] == "X" and a[3] == "X" and a[0] == "X") or (
+            a[7] == "X" and a[4] == "X" and a[1] == "X") or (a[8] == "X" and a[5] == "X" and a[2] == "X") or (
+            a[6] == "X" and a[4] == "X" and a[2] == "X") or (a[8] == "X" and a[4] == "X" and a[0] == "X"):
+        print("AI 우승.")
+    elif lol == 1:
+        print("비겼습니다.")
+def game ():
+    print("┏━━━━━┳━━━━━┳━━━━━┓")
+    print("┃ ",a[6]," ┃ ",a[7]," ┃ ",a[8]," ┃")
+    print("┣━━━━━╋━━━━━╋━━━━━┫")
+    print("┃ ",a[3]," ┃ ",a[4]," ┃ ",a[5]," ┃")
+    print("┣━━━━━╋━━━━━╋━━━━━┫")
+    print("┃ ",a[0]," ┃ ",a[1]," ┃ ",a[2]," ┃")
+    print("┗━━━━━┻━━━━━┻━━━━━┛")
+def play ():
+    while True:
+        c = int(input()) - 1
+        if a[c] == " ":
+            a[c] = "O"
+            break
+        else:
+            print("공백이 아닙니다.")
+import random
+c=(0)
+b=(0)
+print("틱택토")
+print("시작하시려면 아무키나 눌러주세요")
+p=bool(input())
+if p==True or p==False:
+    print("┏━━━━━┳━━━━━┳━━━━━┓")
+    print("┃  7  ┃  8  ┃  9  ┃")
+    print("┣━━━━━╋━━━━━╋━━━━━┫")
+    print("┃  4  ┃  5  ┃  6  ┃")
+    print("┣━━━━━╋━━━━━╋━━━━━┫")
+    print("┃  1  ┃  2  ┃  3  ┃")
+    print("┗━━━━━┻━━━━━┻━━━━━┛")
+    print("키패드의 1~7까지의 숫자가")
+    print("위 그림속 위치의 번호입니다")
+    print("플레이어가 선 입니다. 신중히 선택해 주세요")
+    print("플레이어는 O입니다.")
+print("┏━━━━━┳━━━━━┳━━━━━┓")
+print("┃     ┃     ┃     ┃")
+print("┣━━━━━╋━━━━━╋━━━━━┫")
+print("┃     ┃     ┃     ┃")
+print("┣━━━━━╋━━━━━╋━━━━━┫")
+print("┃     ┃     ┃     ┃")
+print("┗━━━━━┻━━━━━┻━━━━━┛")
+a=[" "," "," "," "," "," "," "," "," "]
+for i in range(4):
+    play()
+    while True:
+        b=int(random.randrange(1,10))-1
+        if a[b]==" ":
+            a[b]="X"
+            break
+    game()
+    win_or_lose()
+play()
+lol=lol+1
+game()
+win_or_lose()
+
+저번 틱택토 코드 함수를 이용하여 줄이기.
+
+오징어게임 징검다리 건너기 /제작중 (숙제)
+
+import random
+a=["■","■","■","■","■","■","■","■","■","■","■","■","■","■","■","■","■","■"]
+die=0
+alive=0
+random=0
+print("이번 게임은 징검다리 건너기 입니다.")
+print("시작하시려면 아무키나 눌러주세요")
+p=bool(input())
+if p==True or p==False:
+    print("┏━━━━━┳━━━━━┓")
+    print("┃ ",a[16]," ┃ ",a[17]," ┃")
+    print("┃ ",a[14]," ┃ ",a[15]," ┃")
+    print("┃ ",a[12]," ┃ ",a[13]," ┃")
+    print("┃ ",a[10]," ┃ ",a[11]," ┃")
+    print("┃ ",a[8]," ┃ ",a[9]," ┃")
+    print("┃ ",a[6]," ┃ ",a[7]," ┃")
+    print("┃ ",a[4]," ┃ ",a[5]," ┃")
+    print("┃ ",a[2]," ┃ ",a[3]," ┃")
+    print("┃ ",a[0]," ┃ ",a[1]," ┃")
+    print("┗━━━━━┻━━━━━┛")
+print("왼쪽과 오른쪽의 구분은 1,0 입니다.")
+print("1이 왼쪽, 0이 오른쪽 입니다.")
+if input(1) or input(0):
+    random=random.randrange(1,3)
+if random==1
+    alive += 1
+elif random==2
+    die += 1
