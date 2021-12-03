@@ -1,0 +1,80 @@
+1부터 100까지 수중 무작위값 10개를 뽑고 가장 큰 수와 가장 작은수를 구하는 코드
+#import random으로 random함수 불러오기.
+import random
+#리스트 a선언
+a=[]
+#number변수 선언
+number=0
+#임시변수 H,HH 선언.
+H=0
+HH=0
+#1~100까지 값중 무작위값 10개 리스트에 저장.
+for i in range(10):
+    a.append(random.randrange(1, 101))
+#리스트a 의 숫자 갯수 기록.
+number=len(a)
+#리스트 a의 첫번째 값과 두번째 값을 비교하고 크거나 같은 수를 H로 정하는 코드.
+if a[0] > a[1]:
+    H = a[0]
+elif a[0] < a[1]:
+    H = a[1]
+else:
+    H = a[0]
+#리스트 a의 첫번째 값과 두번째 값을 비교하고 작거나 같은 수를 H로 정하는 코드.
+if a[0] < a[1]:
+    HH = a[0]
+elif a[0] > a[1]:
+    HH = a[1]
+else:
+    HH = a[0]
+#이제 함수의 세번째 값과 아까전 H의 값을 비교하여 크거나 작은 값을 H값으로 정하는 코드.
+for i in range(2,number):
+    if H < a[i]:
+        H = a[i]
+#이제 함수의 세번째 값과 아까전 H의 값을 비교하여 작거나 같은 값을 H값으로 정하는 코드.
+for i in range(2,number):
+    if HH > a[i]:
+        HH = a[i]
+#결과를 출력하는 코드.
+print("리스트 a에서 나온 값들은",a,"입니다.")
+print("이 숫자들중 가장 큰 수는",H,"입니다.")
+print("이 숫자들중 가장 작은 수는",HH,"입니다.")\
+
+교과서
+import random
+num = []
+for i in range(10):
+    num.append(random.randrange(1,101))
+
+
+p = num[0]
+q = num[0]
+for i in range(10):
+    if p < num[i]:
+        p = num[i]
+    if q > num[i]:
+        q = num[i]
+print(num)
+print(p,q)
+
+import random
+#num은 리스트
+num = []
+#무작위 값 10개를 리스트에 집어 넣기
+for i in range(10):
+    num.append(random.randrange(1,101))
+
+
+#p는 각각 리스트의 첫번째값
+p = num[0]
+#q는 각각 리스트의 첫번째값
+q = num[0]
+#값 비교
+for i in range(10):
+    if p < num[i]:
+        p = num[i]
+    if q > num[i]:
+        q = num[i]
+#결과 출력
+print(num)
+print(p,q)
