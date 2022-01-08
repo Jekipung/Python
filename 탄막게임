@@ -1,0 +1,49 @@
+파이게임 설치법: https://smoothiecoding.kr/%ED%8C%8C%EC%9D%B4%EA%B2%8C%EC%9E%84-%EC%8B%9C%EC%9E%91/
+음악:https://opengameart.org/content/2d-metroid-like-or-shooter-music
+
+
+
+
+
+
+제작중
+mport pygame
+pygame.init()
+screen_width = 700
+screen_height = 700
+
+screen = pygame.display.set_mode([screen_width, screen_height])
+squareImg = pygame.image.load('./square.png')
+def square(squareImg, x, y):
+    screen.blit(squareImg, (x,y))
+running = True
+x = (screen_width * 0)
+y = (screen_height * 0)
+x_change = 0
+y_change = 0
+while running:
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            running = False
+        if event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_LEFT:
+                x_change = -1
+            if event.key == pygame.K_RIGHT:
+                x_change = 1
+            if event.key == pygame.K_DOWN:
+                y_change = 1
+            if event.key == pygame.K_UP:
+                y_change = -1
+        if event.type == pygame.KEYUP:
+            if event.key == pygame.K_LEFT or event.key == pygame.K_RIGHT:
+                x_change = 0
+            if event.key == pygame.K_DOWN or event.key == pygame.K_UP:
+                y_change = 0
+
+    screen.fill((0, 0, 0))
+    x += x_change
+    y += y_change
+    square(squareImg, x, y)
+    pygame.display.flip()
+
+pygame.quit()
