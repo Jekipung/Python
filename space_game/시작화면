@@ -1,0 +1,103 @@
+#파이게임 설치
+import pygame
+#sys 설치
+import sys
+
+# 파이게임 초기화
+pygame.init()
+
+#스크린 크기
+display_width = 800 #가로
+display_height = 600 #세로
+#0 ~ 800   0 ~ 600
+#왼쪽 오른쪽 위  아래
+
+#quit 버튼용 좌표
+quit_botton_width = 400 #가로
+quit_botton_height = 400 #세로
+
+# start 버튼용 좌표
+start_botton_width = 260 #가로
+start_botton_height = 400 #세로
+
+# 창 열기
+screen = pygame.display.set_mode([display_width, display_height])
+
+# 타이틀 설정
+pygame.display.set_caption("타이틀 이름을 이곳에 적으세요.")
+
+# 버튼의 밝은 색상
+color_light = (170, 170, 170)
+# 버튼의 어두운 색상
+color_dark = (100, 100, 100)
+#검은색
+black = (0, 0, 0)
+#하얀색
+white = (255, 255, 255)
+#빨간색
+red = (255, 0, 0)
+#초록색
+green = (0, 255, 0)
+#파란색
+blue = (0, 0, 255)
+#노란색
+yellow = (255, 255, 0)
+
+# 글꼴(폰트) 정하기
+smallfont = pygame.font.SysFont('Corbel', 35)
+
+# 글꼴로 quit 텍스트 렌더링
+quit_text = smallfont.render('quit', True, white)
+
+# 글꼴로 quit 텍스트 렌더링
+start_text = smallfont.render('start', True, white)
+
+# True일때
+while True:
+
+    for ev in pygame.event.get():
+
+        if ev.type == pygame.QUIT:
+            pygame.quit()
+
+        # 마우스가 클릭된것을 인식
+        if ev.type == pygame.MOUSEBUTTONDOWN:
+
+            # quit 버튼을 누르면 게임을 끝나도록
+            if quit_botton_width <= mouse[0] <= quit_botton_width + 140 and quit_botton_height <= mouse[1] <= quit_botton_height + 40:
+                pygame.quit()
+
+            # start 버튼을 누르면 게임이 시작되도록
+            #if start_botton_width <= mouse[0] <= start_botton_width + 140 and start_botton_height <= mouse[1] <= start_botton_height + 40:
+                # 시작코드 적을곳
+
+    # 스크린을 색으로 채우기
+    screen.fill((black))
+
+    # (x,y) 좌표를 튜플 변수로 저장
+    mouse = pygame.mouse.get_pos()
+
+    # 만약 마우스가 quit버튼위로 올라갔을경우 버튼 태두리의 색상을 버튼용 밝은 색상으로 변경
+    if quit_botton_width <= mouse[0] <= quit_botton_width + 140 and quit_botton_height <= mouse[1] <= quit_botton_height + 40:
+        pygame.draw.rect(screen, color_light, [quit_botton_width, quit_botton_height, 140, 40])
+
+    # 아닐경우 버튼 색상 유지
+    else:
+        pygame.draw.rect(screen, color_dark, [quit_botton_width, quit_botton_height, 140, 40])
+
+    # 만약 마우스가 start버튼위로 올라갔을경우 버튼 태두리의 색상을 버튼용 밝은 색상으로 변경
+    if start_botton_width <= mouse[0] <= start_botton_width + 140 and start_botton_height <= mouse[1] <= start_botton_height + 40:
+        pygame.draw.rect(screen, color_light, [start_botton_width, start_botton_height, 140, 40])
+
+    # 아닐경우 버튼 색상 유지
+    else:
+        pygame.draw.rect(screen, color_dark, [start_botton_width, start_botton_height, 140, 40])
+
+    # quit 버튼용 테두리 위에 quit 글씨 작성
+    screen.blit(quit_text, (quit_botton_width + 45 , quit_botton_height))
+
+    # start 버튼용 테두리 위에 start 글씨 작성
+    screen.blit(start_text, (start_botton_width + 45, start_botton_height))
+
+    # 프레임 업데이트
+    pygame.display.update()
