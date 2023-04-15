@@ -1,0 +1,84 @@
+온습도 체크후 lcd에 출력하는 코드
+```
+#include <Wire.h> // i2C 통신을 위한 라이브러리
+#include <LiquidCrystal_I2C.h> // LCD 1692 I2C용 라이브러리
+#include "DHT.h" // 온습도 센서 사용을 위한 라이브러리
+#define DHTPIN A1 // 온습도 센서 핀 지정
+#define DHTTYPE DHT11 
+DHT dht(DHTPIN, DHTTYPE);
+
+LiquidCrystal_I2C lcd(0x27, 16, 2);
+
+byte humi[8] = {
+  // 물컵모양 출력
+  0b00000,
+  0b10001,
+  0b10001,
+  0b11111,
+  0b11111,
+  0b11111,
+  0b11111,
+};
+byte temp[8] = {
+  // 온도계 모양 출력
+  0b00100,
+  0b01010,
+  0b01010,
+  0b01010,
+  0b01010,
+  0b10001,
+  0b11111,
+  0b01110,
+};
+byte char_temp[8] = {
+  // 온도 단위 출력
+  0b10000,
+  0b00110,
+  0b01001,
+  0b01000,
+  0b01000,
+  0b01000,
+  0b01001,
+  0b00110,
+};
+
+void setup() {
+  Serial.begin(9600);
+  dht.begin();
+  lcd.init();
+  lcd.backlight();
+  lcd.createChar(1, temp);
+  lcd.createChar(2, humi);
+  lcd.createChar(3, char_temp);
+}
+
+void loop() {
+  int humi = dht.readHumidity();
+  int temp = dht.readTemperature();
+
+  Serial.print("humidity:");
+  Serial.print(humi);
+  Serial.print("\t temperature");
+  Serial.println(temp);
+  
+  Serial.println();
+  
+  lcd.setCursor(0, 0);
+  lcd.write(byte(1));
+  lcd.setCursor(2, 0);
+  lcd.print((int)temp);
+  lcd.setCursor(5, 0);
+  lcd.write(byte(3));
+
+  lcd.setCursor(8,0);
+  lcd.write(byte(2));
+  lcd.setCursor(10, 0);
+  lcd.print(humi);
+  lcd.setCursor(13, 0);
+  lcd.print("%");
+  delay(1000);
+  lcd.clear();
+  delay(500);
+}
+```
+
