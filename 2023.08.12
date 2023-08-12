@@ -1,0 +1,194 @@
+데코레이터
+파이썬에서 함수를 꾸며주는 도구로, 함수의 동작을 수정하거나 보완할 수 있는 강력한 기능이다.
+데코레이터를 이해하기 위해서는 함수의 개념과 파이썬의 함수를 다루는 법에 대한 기본 이해가 필요하다.
+데코레이터는 중첩으로 사용할수 있으며
+@A
+@B
+일때 실행 순서는
+B -> A 이다.
+
+-----데코레이터 기본 구조:-----
+
+def my_decorator(func):
+    def wrapper(*args, **kwargs):
+        # 함수 호출 전에 수행할 작업
+        print ("함수 호출 전에 어떤 작업을 합니다.")
+
+        # 원래 함수 호출
+        result = func(*args, **kwargs)
+
+        # 함수 호출 후에 수행할 작업
+        print("함수 호출 후에 어떤 작업을 합니다.")
+
+        return result
+    return wrapper
+
+# 데코레이터 적용
+@my_decorator
+def my_function():
+    print("함수를 호출합니다.")
+
+# 함수 호출
+my_function()
+
+-----결과:------
+
+함수 호출 전에 어떤 작업을 합니다.
+함수를 호출합니다.
+함수 호출 후에 어떤 작업을 합니다.
+
+데코레이터는 고차 함수를 활용하는 개념적인 패턴이다.
+
+*고차함수란?
+다른 함수를 인자로 받거나 함수를 반환하는  함수를 말한다.
+즉, 함수를 다루는 함수를 뜻한다.
+
+-----데코레이터를 사용하면 얻을 수 있는 이점:-----
+
+가독성과 모듈성 향상
+
+재사용성
+
+분리된 관심사
+
+기능의 확장
+
+코드 재구조화
+
+def addition_log(func):
+    def wrapper(*args, **kwargs):
+        # 두 수의 합 출력
+        result = func(*args, **kwargs)
+        print("[LOG] 두 수의 합:", result)
+
+        return result
+    return wrapper
+
+# 함수 호출
+@addition_log
+def add(a, b):
+    return a + b
+
+result = add(3, 5)
+print("함수의 결과값:", result)
+
+
+데코레이터의 다양한 활용
+데코레이터는 파이썬에서 매우 다양한 상황에서 활용될 수 있다.
+다음은 데코레이터의 다양한 활용에 대한 몇 가지 예시다.
+
+로깅:함수가 호출될 때마다 로그를 남기는 데코레이터를 만들수 있다.
+이를 통해 디버깅이나 코드 실행과정을 추적할 때 유용하다.
+
+성능 측정:함수의 실행 시간을 측정하고자 할 때, 데코레이터를 활용하여 간단히 처리할 수 있다. 이를 통해 병목 현상을 찾거나 성능 최적화에 도움이 된다.
+
+캐싱:함수의 결과를 캐시에 저장하여 중복 계산을 피하고 성능을 향상시킬 수 있다.
+
+def validate_input(func):
+    def wrapper(*args, **kwargs):
+        for arg in args:
+            if type(arg) not in (int, float):
+                raise TypeError(f'숫자 값만 입력하세요. 입력한 값: {arg}')
+            if not(1 <= arg <= 10):
+                raise ValueError(f'1이상 10 이하의 수를 입력하세요. 입력한 값: {arg}')
+    return wrapper
+
+
+@validate_input
+def process(*args):
+    return args
+
+result = process(1, 2, 'hi', 10, 11)
+
+
+def not_none_list_input(func):
+    def wrapper(*args):
+        # 수정을 위해 튜플을 리스트로 변경
+        args = list(args)
+
+        for i in range(len(args)):
+            # 인자값 중 리스트인 것만 판별
+            if isinstance(args[i], list):
+                # 리스트 내부의 None을 제거한 리스트로 새로 삽입
+                args[i] = list(filter(lambda x: x is not None, args[i]))
+
+        return func(*args)
+    return wrapper
+
+
+@not_none_list_input
+def squared_list(data):
+    return [num ** 2 for  num in data]
+
+input_list = [1, None, -2, 3, None, 4, 5]
+result = squared_list(input_list)
+print("None 값을 제외한 제곱 결과", result)
+
+파라미터가 있는 데코레이터
+
+파라미터가 있는 데코레이터를 만드는 것 또한 가능하다.
+이 역시 고차 함수를 구현했을 때와 비슷하다.
+
+파라미터를 가지는 데코레이터를 정의하는 방법은 앞서 언급한 일반 데코레이터 정의 방법에서 파라미터를 처리하기 위한 두번째 중첩 함수를 추가하는 단계가 필요하다.
+
+import time
+
+def time_logger(threshold):
+    def decorator(func):
+        def wrapper(*args, **kwargs):
+            start_time = time.time()       # 시작 시간
+            result = func(*args, **kwargs) # 함수 호출
+            end_time = time.time()         # 종료 시간
+
+            # 수행 시간
+            elapsed_time = end_time = start_time
+
+            print(f'{func.__name__} 실행시간 {elapsed_time: .4f} 초')
+            if elapsed_time > threshold:
+                print(f'경고: 실행 시간이 임계값 {threshold}를 넘었습니다!!')
+
+            return result
+        return wrapper
+    return decorator
+
+@time_logger(2) # 임계값: 2초
+def slow_function():
+    time.sleep(3)
+    print("slow_function 실행 완료")
+
+@time_logger(2) # 임계값: 2초
+def fast_function():
+    time.sleep(1)
+    print("fast_function 실행 완료")
+
+slow_function()
+fast_function()
+
+------------------------------------
+def type_check(*types):
+    def decorator(func):
+        def wrapper(*args):
+            for i, (typ, val) in enumerate(zip(types, args)):
+                if type(val) is not typ:
+                    raise TypeError(
+                        f'{i+1} 번째 인자는 {typ. __name__} 이어야 합니다'
+                    )
+            return func(*args)
+        return wrapper
+    return decorator
+
+
+@type_check(int, float) # 함수의 첫 번째 인자(a)는 int, 두 번째 인자(b)는 float이다.
+def add(a ,b):
+    return a + b
+
+@type_check(str, int)   # 함수의 첫 번째 인자(a)는 str, 두 번째 인자(b)는 int이다.
+def repeat(a, b):
+    return a * b
+
+result1 = add(3, 5.0)
+print('add 결과:', result1)
+result2 = repeat('hello' , 2)
+print('repeat 결과:' ,result2)
+# 타입이 다른 경우 예외 발생
+result3 = add(3, 5)
