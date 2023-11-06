@@ -1,0 +1,22 @@
+def DFS(numbers,target,curr,idx):
+    # 숫자를 다 사용할 때 까지 더하거나 뺀다.
+    # 숫자를 다 사용했을 때 target이랑 같은 경우 +1을 가지고 올라간다.
+    if idx == len(numbers):
+        if curr == target:
+            return 1
+        else:
+            return 0
+    cnt = DFS(numbers,target,curr + numbers[idx],idx + 1)  # 더하는 용도
+    cnt += DFS(numbers,target,curr - numbers[idx],idx + 1) # 빼는 용도
+    return cnt
+
+def solution(numbers,target):
+    return DFS(numbers,target,0,0)
+
+
+numbers = [1,1,1,1,1]
+target = 3
+print(solution(numbers, target)) # 5
+
+파이썬 튜토
+https://pythontutor.com/
