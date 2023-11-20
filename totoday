@@ -1,0 +1,68 @@
+# vertex(정점), edge(간선)
+v,e = map(int,input().split())
+# 2차원 리스트 생성
+matrix = [[0 for _ in range(v)] for _ in range(v)]
+
+
+for _ in range(e):
+    a,b = map(int,input().split())
+    matrix [a][b] = 1
+    matrix [b][a] = 1
+
+print(matrix)
+
+def DFS(matrix, curr, visit):
+    print(f"{curr}정점 방문")
+    visit[curr] = True
+
+    for i in range(len(matrix[curr])):
+        if not visit[i] and matrix[curr][i]:
+            DFS(matrix, i, visit)
+
+    return
+
+/////////////////////////////////////
+
+# vertex(정점), edge(간선)
+v,e = map(int,input().split())
+
+# graph. 정점과 간선의 정보가 들어있는 자료구조.
+graph = [[] for _ in range(v)]
+print(graph)
+
+# for문에서 _는 사용하지 않는 변수라는 의미.
+# 간선의갯수 (e)만큼 반복
+for _ in range(e):
+    # 어떤수 a, b가 연결되어 있을 경우
+    a,b = map(int,input().split())
+    # a에서 b가 갈수 있다고 표기
+    graph[a].append(b)
+    # b에서 a가 갈수 있다고 표기
+    graph[b].append(a)
+    print(graph)
+    
+# 함수 선언
+def DFS(graph, curr, visit):
+    # 현재 정점의 위치를 방문했다고 출력
+    print(f"{curr}정점 방문")
+    # 방문했기에 True로 변경
+    visit[curr] = True
+
+    # curr값 안에서 값을 보기.
+    for i in graph[curr]:
+        # 만약 지금 정점에서 갈수있는 정점중 보고있는곳이 안간곳(False)라면
+        if not visit[i]:
+            # 함수를 다시 호출해서 curr값을 보고있는곳으로 변경하여 T로 바꾸고 다시 반복하게 만들기.
+            DFS(graph, i, visit)
+
+# 모든 정점이 처음에는 방문하지 않았기 때문에 False
+visit = [False] * v
+# 함수 호출. curr(현재 위치) = 0 번째
+DFS(graph,0, visit)
+
+/////////////////////////////////////
+
+for문
+ for 변수 in range() / 자료형
+
+range(n) = 자료의 범위를
