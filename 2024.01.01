@@ -1,0 +1,29 @@
+from collections import deque
+
+def solution(maps):
+    n,m = len(maps), len(maps[0])
+    visit = [[False for _ in range(m)] for _ in range(n)]
+    offset = [-1,0], [1,0], [0,-1], [0,1]
+    Que = deque([[[0,0],1]])                 # [[방문하고 있는 위치(좌표), 이동한 칸의 개수], ...]
+    visit[0][0] = True
+
+    while Que:
+        curr,cnt = Que.popleft()
+        if curr == [n-1, m-1]:
+            return cnt
+        a,b = curr
+
+        for i,j in offset:
+            na, nb = a+i, b+j
+            if 0 <= na < n and 0 <= nb < m and not visit[na][nb] and maps[na][nb]:
+                Que.append([[na,nb],cnt+1])
+                visit[na][nb] = True
+
+    return -1
+
+maps = [[1,0,1,1,1],
+        [1,0,1,0,1],
+        [1,0,1,1,1],
+        [1,1,1,0,1],
+        [0,0,0,0,1]]
+print(solution(maps))
