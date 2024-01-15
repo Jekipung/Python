@@ -1,0 +1,44 @@
+300제
+https://wikidocs.net/book/922
+
+
+
+
+
+
+## 출력
+# print("I'm learning Python")
+#
+# print('I\'m learning Python')
+
+# # 인덱싱
+# a = "Hello World"
+# print(a[3:7])  # [start:end]  / start 부터 ~ end 전까지
+# print(a[-1])   # -가 붙으면 뒤에서부터
+# print(a[::1])  # [start:end:step]  / start 부터 end 전까지, step만큼 인덱스 증가시면서 보겠다.
+# print(a[4::-1])
+# print(a[:5][::-1])
+#
+# i = 1
+# j = 6
+# print(a[i:j])
+# print(a[j-1:i-1:-1])
+# i = 0
+# print(a[j-1:i-1:-1])
+# print(a[j-1::-1])
+# print(a[i:j][::-1])
+
+# # 시퀀스(시퀀스란 데이터를 순서대로 하나씩 나열하여 나타낸 데이터 구조)형 자료형 / 문자열, 리스트, 튜플
+# a = "Hello"
+# b = "World"
+# print(a+b)
+# print(a + ' ' + b + '!')
+
+# s = "abc"
+# # print(s + 1)
+# # TypeError: can only concatenate(연결짓는) str (not "int") to str
+# # print(1 + s)
+# # TypeError: unsupported(지원하지 않는) operand type(s) for +: 'int' and 'str'
+
+
+
