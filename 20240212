@@ -1,0 +1,78 @@
+# input 입력 시간을 단축하기 위한 코드
+import sys
+input = sys.stdin.readline
+
+# 첫째줄에는 박스와 책의 갯수 정수 n,b
+n,b = map(int, input().split())
+# 둘째줄에는 박스의 크기가 담긴 리스트
+A = list(map(int, input().split()))
+# 셋째줄에는 책의 크기가 담긴 리스트
+B = list(map(int, input().split()))
+# 낭비된 박스 공간
+waste = 0
+# A의 인덱스 i, B의 인덱스 j
+i, j = 0,0
+
+while i < n :
+    if A[i] >= B[j]:
+        A[i] -= B[j]
+        j += 1
+        if j >= b:
+            waste += sum(A[i:])
+            break
+    else:
+        waste += A[i]
+        i += 1
+print(waste)
+
+
+
+
+
+# input 입력 시간을 단축하기 위한 코드
+import sys
+input = sys.stdin.readline
+
+promise = {"000000":"A",
+        "001111":"B",
+        "010011":"C",
+        "011100":"D",
+        "100110":"E",
+        "101001":"F",
+        "110101":"G",
+        "111010":"H"}
+
+# 숫자가 몇개인지 알려주는 정수
+count = int(input())
+# 받은 비밀편지
+# stdin.readline을 사용할경우 엔터인 \n이 들어가 문자 길이가 늘어나 오류를 만듬.
+# rstrip 의 역할은  오른쪽부터 괄호에 문자를 제거하는 메소드이다.
+# 아래에서는 () 공백이 들어갔고, input받은 값중 공백은 엔터인 \n밖에 없으니 \n을 제거한다.
+encoding = input().rstrip()
+# 해독본
+decoding = ""
+
+for i in range(0, len(encoding),6):
+    for key in promise:
+        diff = 0
+        print(key,encoding[i:i+6],decoding)
+        for j in range(len(key)):
+            if key[j] != encoding[i+j]:
+                diff += 1
+        if diff <= 1:
+            decoding += promise[key]
+            break
+    else:
+        print(len(decoding)+1)
+        exit()
+
+
+
+
+
+
+
+
+
+# for i in range(int(input())):
+print(decoding)
