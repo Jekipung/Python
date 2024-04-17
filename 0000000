@@ -1,0 +1,16 @@
+# 100x100 크기의 캔버스에 1x1 크기로 그려진 모자이크 작품을
+# 가리고 싶어서 불투명한 사진을 올린다.
+# 왼쪽 아래 모서리의 x,y좌표, 오른쪽 위 모서리의 x,y좌표 가 N개
+# 그렇게 가린 부분이 M개 이상일경우 가려진것으로 판명
+#
+
+lx, ly, rx, ry = [],[],[],[]
+N, M = map(int, input().split())
+for _ in range(N):
+    a, b, c, d= map(int, input().split())
+    lx.append(a)
+    ly.append(b)
+    rx.append(c)
+    ry.append(d)
+for x in range(lx, rx):
+    for y in (ly, ry):
