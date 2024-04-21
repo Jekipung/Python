@@ -1,16 +1,21 @@
-# 100x100 크기의 캔버스에 1x1 크기로 그려진 모자이크 작품을
-# 가리고 싶어서 불투명한 사진을 올린다.
-# 왼쪽 아래 모서리의 x,y좌표, 오른쪽 위 모서리의 x,y좌표 가 N개
-# 그렇게 가린 부분이 M개 이상일경우 가려진것으로 판명
-#
+프로그래머스 155651번 문제 풀기.
 
-lx, ly, rx, ry = [],[],[],[]
-N, M = map(int, input().split())
-for _ in range(N):
-    a, b, c, d= map(int, input().split())
-    lx.append(a)
-    ly.append(b)
-    rx.append(c)
-    ry.append(d)
-for x in range(lx, rx):
-    for y in (ly, ry):
+백준 1531번 문제 풀기.
+
+깃허브, 노션 정리하기.
+
+
+정리해야 할 목록.
+https://night-knight.tistory.com/entry/%ED%95%9C-%EB%B2%88%EC%9C%BC%EB%A1%9C-%EC%BD%94%EB%94%A9-%EC%97%AD%EB%9F%89%EC%9D%84-%ED%96%A5%EC%83%81%ED%95%98%EB%8A%94-%EB%8F%99%EC%A0%81%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D-%EA%B8%B0%EB%B2%95%EC%9D%84-%EC%95%8C%EC%95%84%EB%B3%B4%EC%9E%90-%F0%9F%94%A5
+https://velog.io/@chnh506/Top-down-%EB%B0%A9%EC%8B%9D%EA%B3%BC-Bottom-up-%EB%B0%A9%EC%8B%9D
+https://velog.io/@polynomeer/%EB%8F%99%EC%A0%81-%EA%B3%84%ED%9A%8D%EB%B2%95Dynamic-Programming
+https://hyul-mode.tistory.com/entry/%EB%B0%B1%EC%A4%80-%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98-1010%EB%B2%88-%EB%8B%A4%EB%A6%AC-%EB%86%93%EA%B8%B0-Python
+https://wikidocs.net/130632
+https://ctkim.tistory.com/entry/python-filter-function
+https://ctkim.tistory.com/entry/%EC%9C%A0%EB%8B%88%ED%8B%B0%EC%97%90%EC%84%9C-new-%ED%82%A4%EC%9B%8C%EB%93%9C%EB%A5%BC-%EC%82%AC%EC%9A%A9%ED%95%98%EB%8A%94-%EC%9D%B4%EC%9C%A0
+https://loklee9.tistory.com/127
+https://ddingmin00.tistory.com/entry/%ED%8C%8C%EC%9D%B4%EC%8D%AC-2%EC%B0%A8%EC%9B%90-%EB%B0%B0%EC%97%B4-%EB%8B%A4%EC%A4%91-%EC%A1%B0%EA%B1%B4%EC%9C%BC%EB%A1%9C-%EC%A0%95%EB%A0%AC%ED%95%98%EA%B8%B0
+https://wikidocs.net/64
+
+이거 써보기
+https://web.archive.org/
