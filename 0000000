@@ -30,6 +30,47 @@ print(solution(book_time))
 
 백준 1531번 문제 풀기.
 
+
+백준 4108번 풀기
+
+# R, C. 행과 열의 값을 받아
+# R개씩 C줄로 폭탄은* 빈공간은.을 입력한다.
+# 이때 공백이 없도록 입력한다.
+# 이후 입력에 0 0이 들어오면 코드를 멈춘다.(마지막이란 뜻이다.)
+# 출력할때 *은 그대로 납두는 대신, .에 위치에
+# 인접한 지뢰의 개수를 담아 출력한다.
+# 최단경로 알고리즘을 구현할때처럼, 이동할수있는 거리를 리스트로 담아놓고,
+# for문을 이용하여 탐색하려 인접한 지뢰의 개수를 구하고,
+# 출력때 .에 위치에 그 인접한 지뢰의 개수를 출력한다.
+
+
+
+
+import sys
+input = sys.stdin.readline
+
+# while문이 작동하기위해 R,C에 0을 제외한 임이의 값을 넣어둔다.
+
+# move = [[-1, -1], [-1, 0], [-1, 1], [0, -1], [0, 1], [1, -1], [1, 0], [1, 1]]
+moveX = [-1,0,1]
+moveY = [-1,0,1]
+
+while True:
+    R, C = map(int, input().split())
+    if R == 0 and C == 0:
+        break
+    world = [list(input().rstrip()) for _ in range(R)]
+    for x in moveX:
+        for y in moveY:
+            if x == 0 and y == 0:
+                continue
+            if 
+
+    print(world)
+
+
+
+
 깃허브, 노션 정리하기.
 
 
