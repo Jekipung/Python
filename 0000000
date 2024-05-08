@@ -64,8 +64,16 @@ while True:
         for y in moveY:
             if x == 0 and y == 0:
                 continue
-            if 
-
+            for i in range(R):
+                for j in range(C):
+                    if world[i][j] == "*":
+                        if i+x >= 0 and i+x <= R and i+y >= 0 and i+y <= C:
+                            if world[i+x][j+y] == ".":
+                                world[i+x][j+y] = 1
+                            elif world[i+x][j+y] == "*":
+                                pass
+                            else:
+                                world[i+x][j+y] += 1
     print(world)
 
 마이크로소프트 자체 한글
