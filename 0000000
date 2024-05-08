@@ -76,6 +76,38 @@ while True:
                                 world[i+x][j+y] += 1
     print(world)
 
+백준3863번
+
+# 통화중 화를 내면 감옥에 가는 법에 따라
+# 통화중 화를 내는 사람을 단속하기위해 모든 전화 통화를 도청하고자 한다.
+# 경찰은 적절한 인원을 뽑아 특정 시간동안 전화를 도청하려고 하고,
+# 각 직원은 도청을 하기 전에 매우 오랜 시간동안 휴식을 취해야 한다.
+# 이럴때 경찰은 총 몇명의 직원을 고용해야 하는지 구하는 프로그램을 작성하시오.
+# 각 테스트 케이스의 첫째 줄에는 전화 통화의 수 N, 구간의 수 M이 주어진다.
+
+#
+
+while True:
+    # 전화 통화의 수 N, 구간의 수 M
+    N, M = map(int, input().split())
+    if N == 0 and M == 0:
+        break
+    for _ in range(N):
+        # Source = , Destination = ,  Duration = 통화시간을 초로 나타낸 것, Start = 발신시간
+        Nsource, Ndestination, Nstart, Nduration = map(int, input().split())
+    for _ in range(M):
+        Mstart, Mduration = map(int, input())
+
+
+
+
+
+
+
+
+
+
+
 마이크로소프트 자체 한글
 https://yololife-sy.medium.com/%ED%95%9C%EA%B8%80-%EC%9D%B8%EC%BD%94%EB%94%A9-utf8-cp949-%EC%9D%B8%EC%BD%94%EB%94%A9%EC%9D%B4-%EB%AD%90%EC%95%BC-%EC%9D%B4%EA%B1%B4-%EB%AC%B4%EC%8A%A8-%EC%97%90%EB%9F%AC%EC%9D%B8%EA%B1%B0%EC%95%BC-a9803fd042dd
 
