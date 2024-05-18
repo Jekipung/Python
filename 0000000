@@ -4,22 +4,72 @@ https://www.acmicpc.net/problem/2238
 
 + BFS DFS 응용 오지게 풀어오기
 
+****************************************
+대회
+
+처음에는 Yolo-pose나 google에 mobilenet-pose-estimation를 사용하려 했습니다.
+하지만 진행하던도중 접근이 잘못되었다는것을 알게되었습니다.
+하나의 프레임만 추정해도 
+Yolo-pose
+여러개의 프레임을 전부 추정해서 결과값을 내야하기 때문에 (가벼워야 함)
+
+RNN(Recurrent Neural Network) 을 사용해야함.
+
+(가볍다!)
+mediapipa를 사용하기로 결정하였습니다.
+mediapipa-pose(짜세추적), mediapipa-hands(손추적)
+
+수화가 한순간의 프레임을 잡는것이 아닌, 이어지는 동작을 잡아내야 하기에
+
+
+framework
+컴퓨터 프로그래밍에서 소프트웨어 프레임워크는 복잡한 문제를 해결하거나 서술하는 데 사용되는 기본 개념 구조이다. 간단히 뼈대, 골조, 프레임워크라고도 한다.
+
+시각장애인 문맹률에 관한 기사
+https://www.chosun.com/special/future100/fu_general/2021/01/06/TNMPFKS2NJGDFISWIJFELBSB4Q/
+
+파이썬 언어 레퍼런스 사이트
+https://docs.python.org/ko/3/reference/index.html
+
+우리의 역할은 해결의 "길"을 제시해주는것.
+어플까지 만들었으니 데이터셋이 쌓이면 쌓일수록 ~~
 
 
 
 
 
 
+****************************************
+리다이렉트(Redirect)와 포워드(Forward)의 차이는 무엇인가?
+https://kotlinworld.com/329
+
+아키텍처에 대한 설명
+https://www.osckorea.com/post/bigaebaljado-swibge-ihaehaneun-akitegceoyi-gaenyeom
+
+얕은복사 깊은복사
+https://crackerjacks.tistory.com/14
 
 
+개발자 지망생 블록마스크 티스토리
+https://blockdmask.tistory.com/
 
+개발자언노운 inspirer9 티스토
+https://inspirer9.tistory.com/
 
+****************************************
+가장 쉽게 이중리스트 만드는 코드
 
+two_d_list = []
+for _ in range(5):
+    line = []
+    for _ in range(10):
+        line.append(0)
+    two_d_list.append(line)
 
+=
 
-
-
-
+two_d_list = [[0 for _ in range(10)] for _ in range(5)]
+****************************************
 
 프로그래머스 155651번 문제 풀기.
 """
