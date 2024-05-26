@@ -36,6 +36,8 @@ Jets orin nano를 사용하게 된것.
 우리의 역할은 해결의 "길"을 제시해주는것.
 어플까지 만들었으니 데이터셋이 쌓이면 쌓일수록 ~~
 
+*가라 뜻 은 비다, 허공, 거짓을 의미
+mobilenet이나 yolo pose나 그런거 이제 비교해서 가라로 작성.
 
 
 
@@ -57,7 +59,6 @@ https://docs.python.org/ko/3/reference/index.html
 
 
 
-
 이름
 connection or linkly
 
@@ -70,8 +71,7 @@ codefair.kro.kr
 **[인공지능연구원] LSTM Action Recognition 구현(MediaPipe)**
 https://blog.naver.com/112fkdldjs/222972860886
 
-*가라 뜻 은 비다, 허공, 거짓을 의미
-mobilenet이나 yolo pose나 그런거 이제 비교해서 가라로 작성.
+
 
 
 
