@@ -1,3 +1,4 @@
+# pypy3로 돌릴것.
 import sys
 s_input = sys.stdin.readline
 
